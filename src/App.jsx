@@ -1,12 +1,13 @@
 import './App.css'
-import Footer from './components/Footer'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
 
 function App() {
 
   return (
-    <h1 className='text-5xl'>
-      Hello World
-    </h1>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+    </Routes>
   )
 }
 
