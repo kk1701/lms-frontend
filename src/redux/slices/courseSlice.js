@@ -19,7 +19,7 @@ export const getAllCourses = createAsyncThunk("/course/getAllCourses", async (da
             }
         )
 
-        return await response
+        return (await response).data.courses
 
     } catch (error) {
         console.log(error.response.data);
@@ -32,6 +32,14 @@ const courseSlice = createSlice({
     name: "course",
     initialState,
     reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(getAllCourses.fulfilled, (state, action) => {
+            console.log(action.payload);
+            if(action?.payload){
+                state.courseList = [...action.payload]
+            }
+        })
+    }
 })
 
 export default courseSlice.reducer
