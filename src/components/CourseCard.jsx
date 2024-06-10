@@ -4,8 +4,12 @@ function CourseCard( { data } ) {
 
     const navigate = useNavigate()
 
+    function onCourseClick(){
+        navigate('/course/description', { state: {...data} })
+    }
+
     return(
-        <div onClick={navigate('/course/description', { state: {...data} })} className="text-white w-[22rem] h-[390px] shadow-lg rounded-lg cursor-pointer group overflow-hidden bg-zinc-700">
+        <div onClick={onCourseClick} className="text-white w-[22rem] h-[390px] shadow-lg rounded-lg cursor-pointer group overflow-hidden bg-zinc-700">
             <div className="overflow-hidden">
                 <img 
                     alt="Course thumbnail"
