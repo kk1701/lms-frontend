@@ -5,7 +5,7 @@ import axiosInstance from "../../config/axiosInstance"
 const initialState = {
     key: "",
     subscription_id: "",
-    isPaymentVerifies: false,
+    isPaymentVerified: false,
     allPayments: {},
     finalMonths: {},
     monthlySalesRecords: []
@@ -92,11 +92,11 @@ const razorpaySlice = createSlice({
         })
         .addCase(verifyUserPayment.fulfilled, (state, action) => {
             toast.success(action?.payload?.message)
-            state.isPaymentVerifies = action?.payload?.success
+            state.isPaymentVerified = action?.payload?.success
         })
         .addCase(verifyUserPayment.rejected, (state, action) => {
             toast.error(action?.payload?.message)
-            state.isPaymentVerifies = action?.payload?.success
+            state.isPaymentVerified = action?.payload?.success
         })
         .addCase(getPaymentRecord.fulfilled, (state, action) => {
             state.allPayments = action?.payload?.allPayments
