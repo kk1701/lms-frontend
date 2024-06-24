@@ -6,7 +6,7 @@ const initialState = {
     lectures: [],
 }
 
-export const getCourseLectures = createAsyncThunk("/course/lecture/get", async () => {
+export const getCourseLectures = createAsyncThunk("/course/lecture/get", async (cid) => {
     try {
         const response = axiosInstance.get(`/courses/${cid}`)
         toast.promise(response, {
@@ -40,7 +40,7 @@ export const addCourseLecture = createAsyncThunk("/course/lecture/add", async (d
     }
 })
 
-export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", async () => {
+export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", async (data) => {
     try {
         const response = axiosInstance.delete(`/courses?courseId=${data.courseId}&lectureId=${data.lectureId}`)
         toast.promise(response, {
